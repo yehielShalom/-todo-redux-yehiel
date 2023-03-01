@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState } from "react";
 
 export default function App() {
   let [isCrossed, setIsCrossed] = useState(false);
@@ -22,8 +22,16 @@ export default function App() {
     [0, 4, 8],
     [2, 4, 6],
   ];
-
-  
+  let winner=()=>{
+    for (let i = 1; i <= itemArray.length; i++) {
+        for (let j = 0; j < winSituations.length; j++) {
+          if(itemArray[i] && itemArray[i-1] && itemArray[i+1] == winSituations[j]) {
+            setWinMessage("YOU WIN");
+            break;
+          }
+        }
+    }
+  }
 
   console.log(itemArray);
   return <div>App</div>;
