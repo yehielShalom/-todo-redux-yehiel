@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {useForm} from 'react-hook-form'
 
-
+const [toggle,setToggle] = useState('false')
 const regexAlphabet = /^[a-zA-Z\s]+$/;
 const regexEmail = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
 
@@ -63,10 +63,18 @@ console.log(_bodyData)
              type='password' className='form-control' placeholder='Confirm Password...' />
         </div>
         <div className='mt-2'>
+            <input
+            onClick = {()=>setToggle(!toggle)}
+            type = "checkbox" className='form-check-input me-2'
+            />
+            <label>{!toggle ? 'show' : 'hide'}</label>
+        </div>
+        <div className='mt-2'>
         <button className='btn-primary btn me-2'>Sign Up</button>
         <button className='btn-dark btn me-2'>Back</button>
 
         </div>
+        
         </form>
   
     </div>
