@@ -1,6 +1,11 @@
 import React from 'react'
+import {useForm} from 'react-hook-form'
 
-const SignUp = () => {
+const SignUp = () => {  
+    const {getValue,register,handlesSubmit,formState: {errors}} = useForm()
+    const onSub = (_bodyData) =>{
+console.log(_bodyData)
+        }
   return (
     <div className='d-flex justify-content-center pt-5'>
         {/* 
@@ -11,12 +16,13 @@ const SignUp = () => {
         Confirm Password
         Country(optional)
         */}
-        <form style={{borderRadius:'30px'}} className='col-lg-4 col-md-5 col-10 shadow border p-3'>
+
+        <form onSubmit={handlesSubmit(onSub)} style={{borderRadius:'30px'}} className='col-lg-4 col-md-5 col-10 shadow border p-3'>
         <h1 className='display-6'>Sign Up</h1>
 
         <div className='mt-2'>
             <label>First Name:</label>
-            <input type='text' className='form-control' placeholder='Type First Name...' />
+            <input {...register('firstName')} type='text' className='form-control' placeholder='Type First Name...' />
         </div>
         <div className='mt-2'>
             <label>Last Name:</label>
