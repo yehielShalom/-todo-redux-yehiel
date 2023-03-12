@@ -1,8 +1,62 @@
-import React from 'react'
+import React, { useState } from 'react'
+import {useForm} from 'react-hook-form'
 
-const Login = () => {
+const Login = () => {  
+  const {getValues,register,handleSubmit,formState: {errors}} = useForm()
+  const onSub = (_bodyData) =>{
+console.log(_bodyData)
+      }
+      console.log(errors);
+      const [toggle,setToggle] = useState(false)
+      const regexEmail = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+
+
   return (
-    <div>Login</div>
+    <div className='d-flex justify-content-center pt-5'>
+        {/* 
+        First Name
+        Last Name
+        Email
+        Password
+        Confirm Password
+        Country(optional)
+        */}
+
+        <form onSubmit={handleSubmit(onSub)} style={{borderRadius:'30px'}} className='col-lg-4 col-md-5 col-10 shadow border p-3'>
+        <h1 className='display-6'>login</h1>
+
+        <div className='mt-2'>
+            <label>Email:</label>
+            <input {...register('Email',{required:{value:true, message:"Email its empty"},
+            pattern:{value:regexEmail,message:"u have @"}})}
+             type='email' className='form-control' placeholder='Type Email...' />
+             {errors.Email && <p className='m-0 text-danger'>{errors.Email.message}</p>}
+        </div>
+        <div className='mt-2'>
+            <label>Password:</label>
+            <input {...register('Password',{required:{value:true , message:"Password is empty!"},
+            minLength:{value:5,message:"min 5 char..."},
+            maxLength:{value:20,message:"max 20 chars"},
+            })}
+            type={!toggle? 'password' : 'text'} className='form-control' placeholder='Type Password...' />
+            {errors.Password && <p className='m-0 text-danger'>{errors.Password.message}</p>}
+        </div>
+        <div className='mt-3'>
+            <input style={{border:'gray 2px solid',borderRadius:'50%'}}
+            onClick = {()=>setToggle(!toggle)}
+            type = "checkbox" className='form-check-input me-2'
+            />
+            <label>{!toggle ? 'show' : 'hide'} password</label>
+        </div>
+        <div className='mt-2'>
+        <button className='btn-primary btn me-2'>Sign Up</button>
+        <button className='btn-dark btn me-2'>Back</button>
+
+        </div>
+        
+        </form>
+  
+    </div>
   )
 }
 

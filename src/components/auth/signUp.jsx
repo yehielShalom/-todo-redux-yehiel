@@ -1,9 +1,7 @@
 import React, { useState } from 'react'
 import {useForm} from 'react-hook-form'
 
-const [toggle,setToggle] = useState('false')
-const regexAlphabet = /^[a-zA-Z\s]+$/;
-const regexEmail = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+
 
 const SignUp = () => {  
     const {getValues,register,handleSubmit,formState: {errors}} = useForm()
@@ -11,6 +9,9 @@ const SignUp = () => {
 console.log(_bodyData)
         }
         console.log(errors);
+        const [toggle,setToggle] = useState(false)
+        const regexAlphabet = /^[a-zA-Z\s]+$/;
+        const regexEmail = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
   return (
     <div className='d-flex justify-content-center pt-5'>
         {/* 
@@ -27,10 +28,13 @@ console.log(_bodyData)
 
         <div className='mt-2'>
             <label>First Name:</label>
-            <input {...register('firstName',{required:{value:true,message:"first name is required..."}
+            <input {...register('firstName',
+            {required:{value:true,message:"first name is required..."}
             ,minLength:{value:2,message:"min 2 char..."},
             maxLength:{value:20,message:"max 20 chars"},
-            pattern:{value:regexAlphabet,message:"only alphabet allowed.."}})} type='text' className='form-control' placeholder='Type First Name...' />
+            pattern:{value:regexAlphabet,message:"only alphabet allowed.."}})} 
+            type='text' className='form-control' placeholder='Type First Name...' />
+            {errors.firstName && <p className='m-0 text-danger'>{errors.firstName.message}</p>}
         </div>
         <div className='mt-2'>
             <label>Last Name:</label>
@@ -39,6 +43,7 @@ console.log(_bodyData)
             maxLength:{value:20,message:"max 20 chars"},
             pattern:{value:regexAlphabet,message:"only alphabet allowed.."}})}
             type='text' className='form-control' placeholder='Type Last Name...' />
+            {errors.lastName && <p className='m-0 text-danger'>{errors.lastName.message}</p>}
         </div>
 
         <div className='mt-2'>
@@ -46,6 +51,7 @@ console.log(_bodyData)
             <input {...register('Email',{required:{value:true, message:"Email its empty"},
             pattern:{value:regexEmail,message:"u have @"}})}
              type='email' className='form-control' placeholder='Type Email...' />
+             {errors.Email && <p className='m-0 text-danger'>{errors.Email.message}</p>}
         </div>
         <div className='mt-2'>
             <label>Password:</label>
@@ -53,21 +59,24 @@ console.log(_bodyData)
             minLength:{value:5,message:"min 5 char..."},
             maxLength:{value:20,message:"max 20 chars"},
             })}
-            type='password' className='form-control' placeholder='Type Password...' />
+            type={!toggle? 'password' : 'text'} className='form-control' placeholder='Type Password...' />
+            {errors.Password && <p className='m-0 text-danger'>{errors.Password.message}</p>}
         </div>
         <div className='mt-2'>
             <label>Confirm Password:</label>
-            <input {...register('Confrim Password',{required:{value:true , message:"Confirm Password is empty!"},
+            <input {...register('ConfrimPassword',{required:{value:true , message:"Confirm Password is empty!"},
             validate:{value:(val)=> getValues('password') == val || "password do not match"}
-            })}
-             type='password' className='form-control' placeholder='Confirm Password...' />
+            }
+            )}
+             type={!toggle? 'password' : 'text'} className='form-control' placeholder='Confirm Password...' />
+             {errors.ConfrimPassword && <p className='m-0 text-danger'>{errors.ConfrimPassword.message}</p>}
         </div>
-        <div className='mt-2'>
-            <input
+        <div className='mt-3'>
+            <input style={{border:'gray 2px solid',borderRadius:'50%'}}
             onClick = {()=>setToggle(!toggle)}
             type = "checkbox" className='form-check-input me-2'
             />
-            <label>{!toggle ? 'show' : 'hide'}</label>
+            <label>{!toggle ? 'show' : 'hide'} password</label>
         </div>
         <div className='mt-2'>
         <button className='btn-primary btn me-2'>Sign Up</button>
