@@ -6,6 +6,7 @@ const SignUp = () => {
     const onSub = (_bodyData) =>{
 console.log(_bodyData)
         }
+        console.log(errors);
   return (
     <div className='d-flex justify-content-center pt-5'>
         {/* 
@@ -22,7 +23,7 @@ console.log(_bodyData)
 
         <div className='mt-2'>
             <label>First Name:</label>
-            <input {...register('firstName',{required:{value:true,message:"first name is required"}})} type='text' className='form-control' placeholder='Type First Name...' />
+            <input {...register('firstName',{required:{value:true,message:"first name is required..."},minLength:{value:2,message:"min 2 char..."}})} type='text' className='form-control' placeholder='Type First Name...' />
         </div>
         <div className='mt-2'>
             <label>Last Name:</label>
