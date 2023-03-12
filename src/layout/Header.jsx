@@ -16,13 +16,13 @@ const Header = () => {
           <Link className="nav-link active" to={"/"} aria-current="page">Home <span className="visually-hidden">(current)</span></Link>
         </li>
         <li className="nav-item">
-          <Link className="nav-link" to={"/cars"}>Cars</Link>
+          <Link className="nav-link" to={"/page"}>Page</Link>
         </li>
         <li className="nav-item dropdown">
           <Link className="nav-link dropdown-toggle" to={"#"} id="dropdownId" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</Link>
           <div className="dropdown-menu" aria-labelledby="dropdownId">
-            <Link className="dropdown-item" to={"#"}>Action 1</Link>
-            <Link className="dropdown-item" to={"#"}>Action 2</Link>
+            <Link className="dropdown-item" to={"/login"}>Login</Link>
+            <Link className="dropdown-item" to={"/signUp"}>SignUp</Link>
           </div>
         </li>
       </ul>

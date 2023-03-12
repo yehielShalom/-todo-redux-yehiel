@@ -1,7 +1,8 @@
 import React from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Login from '../components/auth/login';
+import SignUp from '../components/auth/signUp';
 import Home from '../components/home';
-import Cars from '../layout/Cars';
 import Layout from '../layout/layout';
 import NotFound404 from '../layout/notFound404';
 
@@ -15,15 +16,20 @@ const AppRoutes = () => {
             {/* 3 - routes for layouts  */}
             {/* Layout =>>>> Outlet */}
                 <Route path='/' element={<Layout />}>
+
                     {/* Outlet one option can be */}
                     {/* Outlet =>>>>>> */}
                     {/* index == path = '/' */}
                     <Route index element={<Home />} />
-                    <Route path='/cars' element={<Cars/>} />
+                    <Route path='/page' element={<h1>Page</h1>} />
+                    <Route path='/signUp' element={<SignUp/>} />
+                    <Route path='/login' element={<Login/>} />
+                    
                     {/* <<<<<<<<Outlet */}
                 </Route>
-
                 <Route path='*'  element={<NotFound404/>} />
+
+              
             </Routes>
         </Router>
     )
