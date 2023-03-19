@@ -4,7 +4,9 @@ import { AppContext } from '../../context/context'
 const Page1 = () => {
     const {count,plus,minus} = useContext(AppContext);
   return (
-    <div>count: {count}</div>
+    <div>count: {count};
+    
+    </div>
   )
 }
 
