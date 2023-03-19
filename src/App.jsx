@@ -11,11 +11,11 @@ const plus =()=>{
   else{setCount(+1);}
 }
 const minus =()=>{
-  if(count>=10)setCount(0);
+  if(count>=10)setCount(10);
   else{setCount(-1);}
 }
   return (
-    <AppContext.Provider value={{count}}>
+    <AppContext.Provider value={{count,plus,minus}}>
       <AppRoutes/>
     </AppContext.Provider>
   )
