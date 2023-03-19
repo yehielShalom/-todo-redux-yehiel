@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { AppContext } from '../../context/context'
 
 const Page1 = () => {
+    const {count,plus,minus} = useContext(AppContext);
   return (
-    <div>Page1</div>
+    <div>count: {count}</div>
   )
 }
 
