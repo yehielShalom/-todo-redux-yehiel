@@ -4,7 +4,7 @@ import { AppContext } from './context/context'
 import AppRoutes from './routes/appRoutes'
 
 const App = () => {
-CONST [count,setCount] = useState(0);
+const [count,setCount] = useState(0);
 
 const plus =()=>{
   if(count>=10)setCount(0);

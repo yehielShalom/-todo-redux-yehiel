@@ -16,10 +16,10 @@ const Header = () => {
           <Link className="nav-link active" to={"/"} aria-current="page">Home <span className="visually-hidden">(current)</span></Link>
         </li>
         <li className="nav-item">
-          <Link className="nav-link" to={"/page"}>Page</Link>
+          <Link className="nav-link" to={"/page1"}>Page1</Link>
         </li>
-        <li className="nav-item dropdown">
-          <Link className="nav-link dropdown-toggle" to={"#"} id="dropdownId" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</Link>
+        <li className="nav-item">
+          <Link className="nav-link" to={"/page2"}>Page2</Link>
         </li>
       </ul>
     </div>
