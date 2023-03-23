@@ -16,7 +16,7 @@ const App = () => {
   const minus = () => {
     if (count <= 0) setCount(10);
     else {
-      setCount(count-1);
+      setCount(count - 1);
     }
   };
   return (
