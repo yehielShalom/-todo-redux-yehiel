@@ -4,11 +4,12 @@ import { AppContext } from "../../context/context";
 const Page1 = () => {
   const { count, plus, minus } = useContext(AppContext);
   return (
-    <div >
-      count: {count}
+    <div className="text-center">
+      <h1> count: {count}</h1>
+
       <div>
-        <button onClick={() => plus}>+</button>
-        <button onClick={() => minus}>-</button>
+        <button onClick={plus}>+</button>
+        <button onClick={minus}>-</button>
       </div>
     </div>
   );
