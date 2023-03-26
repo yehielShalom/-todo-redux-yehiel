@@ -5,7 +5,7 @@ import Header from './header'
 const Layout = () => {
   return (
     <div>
-        <Header/>
+        {/* <Header/> */}
         {/*
          Outlet render element by path in url 
         Emaple: /home => will be render The elment of Home components
