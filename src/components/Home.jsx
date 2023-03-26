@@ -1,6 +1,5 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState } from "react";
 const Home = () => {
-
   /**
    * p - padding
    * m - margin
@@ -40,11 +39,9 @@ const Home = () => {
 
   return (
     <div>
-      <div className='bg-cover bg-center w-[100%] h-[450px] md:w-[450px] md:h-[450px]  lg:w-[300px] lg:h-[300px] bg-[url(https://i.natgeofe.com/n/6490d605-b11a-4919-963e-f1e6f3c0d4b6/sumatran-tiger-thumbnail-nationalgeographic_1456276_4x3.jpg)]'></div>
-
+      <div className="bg-cover bg-center w-[100%] h-[450px] md:w-[450px] md:h-[450px]  lg:w-[300px] lg:h-[300px] bg-[url(https://i.natgeofe.com/n/6490d605-b11a-4919-963e-f1e6f3c0d4b6/sumatran-tiger-thumbnail-nationalgeographic_1456276_4x3.jpg)]"></div>
     </div>
+  );
+};
 
-  )
-}
-
-export default Home
+export default Home;
