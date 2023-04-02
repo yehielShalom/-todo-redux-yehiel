@@ -1,10 +1,17 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
+import { addTodo } from '../redux/features/todoSlice';
+import { useDispatch } from'react-redux';
+const AddTodo = ({hide}) => {
+    const dispatch = useDispatch();
 
-const AddTodo = () => {
-    const { register, handleSubmit, formState: { errors } } = useForm();
-    const onSub = (_bodyData) => {
-        console.log(_bodyData)
+    const { reset,resetField,register, handleSubmit, formState: { errors } } = useForm();
+
+    const onSub = (_bodyData) => {    
+        dispatch(addTodo(_bodyData))
+        hide()
+        reset()
+        resetField()
     }
     return (
         <div className='pb-3'>
