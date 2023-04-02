@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import {FaCheckCircle,FaTrash} from 'react-icons/fa'
 import AddTodo from './addTodo'
 import {useSelector,useDispatch} from 'react-redux'
-import { toggleAction } from '../redux/features/todoSlice'
+import { getTodos, toggleAction,deleteTodo,isCompletedToggle } from '../redux/features/todoSlice'
 const Home = () => {
   const {todos,toggle} = useSelector((store)=>store.todoReducer)
   // const {todoReducer:{toggle}} = useSelector((store)=>store)
@@ -11,10 +11,14 @@ const Home = () => {
   const showHide = () =>{
     dispatch(toggleAction())
   }
+
+  useEffect(()=>{
+    dispatch(getTodos())
+  },[])
   return (
     <div>
       <div className='container mx-auto max-md:px-7 py-5'>
-      <div className='bg-slate-300 mx-auto md:w-[75%] lg:w-[45%]  shadow-2xl border rounded-2xl p-[15px]'>
+      <div className='bg-slate-300 mx-auto max-sm:w-[100%] max-md:w-[75%] lg:w-[55%]  shadow-2xl border rounded-2xl p-[15px]'>
         <p className='text-[1.5em] underline'>TODO LIST</p>
         <button onClick={showHide} className='block btn btn-accent btn-xs text-white my-3'>{toggle?'Hide':'Add Todo'}</button>
        {toggle && <AddTodo hide={showHide}/>} 
@@ -33,7 +37,7 @@ const Home = () => {
     </thead>
     <tbody>
 
-      {todos?.map(({todo,date,time,isCompleted},index)=>(
+      {todos?.map(({todo,date,time,isCompleted,id},index)=>(
       <tr className={(isCompleted&& 'line-through').toString()} key={index}>
       <th>{index+1}</th>
       <td>{todo}</td>
@@ -41,8 +45,8 @@ const Home = () => {
       <td>{time}</td>
       <td>
         <div className='flex items-center '>
-        <FaCheckCircle color={isCompleted?'green':'purple'} className='mx-1 cursor-pointer'/>
-         <FaTrash color='red' className='cursor-pointer'/>
+        <FaCheckCircle onClick={()=>dispatch(isCompletedToggle(id))} color={isCompleted?'green':'purple'} className='mx-1 cursor-pointer'/>
+         <FaTrash onClick={()=>dispatch(deleteTodo(id))} color='red' className='cursor-pointer'/>
         </div>
       </td>
     </tr>
