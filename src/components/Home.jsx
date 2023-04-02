@@ -1,16 +1,23 @@
 import React from 'react'
 import {FaCheckCircle,FaTrash} from 'react-icons/fa'
 import AddTodo from './addTodo'
+import { useDispatch, useSelector } from 'react-redux'
+import { toggleAction } from '../redux/features/todoslice'
 const Home = () => {
 
+  const {todos,toggle} = useSelector((store)=>store.todoReducer)
+  console.log(toggle);
+  const dispatch = useDispatch()
 
   return (
     <div>
       <div className='container mx-auto max-md:px-7 py-5'>
       <div className='bg-slate-300 mx-auto md:w-[75%] lg:w-[45%]  shadow-2xl border rounded-2xl p-[15px]'>
         <p className='text-[1.5em] underline'>TODO LIST</p>
-        <button className='block btn btn-accent btn-xs text-white'>Add Todo</button>
-        <AddTodo/>
+        <button onClick={()=>{
+           dispatch(toggleAction()) 
+        }} className='block btn btn-accent btn-xs text-white'>{toggle ? 'Hide' : 'add Todo'}</button>
+      {toggle && <AddTodo/>}
       {/* Table */}
       <div className="overflow-x-auto">
   <table className="table w-full">
